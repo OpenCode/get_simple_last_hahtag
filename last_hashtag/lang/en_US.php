@@ -17,6 +17,7 @@ $i18n = array (
 	"LAST_HASHTAG_DESC" =>  "Plugin that shows last hashtag tweet from twitter",
 	"LAST_HASHTAG_ERROR"	=>	"Invalid Hashtag",
 	"HASHTAG"		=>	"Hashtag",
-	"TWEET_LIMIT"		=>	"Max Tweet Number"
+	"TWEET_LIMIT"		=>	"Max Tweet Number",
+	"DELAY"		=>	"Set delay from data refresh (seconds)"
 
 );

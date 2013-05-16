@@ -14,9 +14,10 @@
 $i18n = array (
 	
 	"LAST_HASHTAG_TITLE"=>  "Configurazione Last Hashtag",
-	"LAST_HASHTAG_DESC" =>  "Plugin che mostra gli utlimi tweet in base ad un hashtag",
+	"LAST_HASHTAG_DESC" =>  "Plugin che mostra gli ultimi tweet in base ad un hashtag",
 	"LAST_HASHTAG_ERROR"	=>	"Hashtag non valido",
 	"HASHTAG"		=>	"Hashtag",
-	"TWEET_LIMIT"		=>	"Numero Massimo di Tweet"
+	"TWEET_LIMIT"		=>	"Numero Massimo di Tweet",
+	"DELAY"		=>	"Imposta ritardo nell'aggiornamento dei dati (secondi)"
 
 );

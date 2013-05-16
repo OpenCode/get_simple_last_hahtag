@@ -41,20 +41,24 @@ if (file_exists($thisfile_xml)) {
 	$x = getXML($thisfile_xml);
 	$hashtag = $x->hashtag;
 	$tweet_limit = $x->tweet_limit;
+	$delay = $x->delay;
 } else {
 	$hashtag = '';
 	$tweet_limit = '';
+	$delay = '';
 }
 
 function last_hashtag_show() {
-	global $thisfile_xml, $hashtag, $tweet_limit, $thisfile_lht;
+	global $thisfile_xml, $hashtag, $tweet_limit, $delay, $thisfile_lht;
 	$success=null;
 	$error=null;
 	
 	// submitted form
 	if (isset($_POST['submit'])) {
 		$hashtag='';
-		
+		$tweet_limit = '';
+		$delay = '';
+
 		# check to see if the hashtag is passed
 		if ($_POST['hashtag'] != '') {
 			$hashtag = $_POST['hashtag'];
@@ -64,12 +68,18 @@ function last_hashtag_show() {
 		if ($_POST['tweet_limit'] != '') {
 			$tweet_limit = $_POST['tweet_limit'];
 		}
+
+		# check to see if the dealy is passed
+		if ($_POST['delay'] != '') {
+			$delay = $_POST['delay'];
+		}
 		
 		# if there are no errors, dave data
 		if (!$error) {
 			$xml = @new SimpleXMLElement('<item></item>');
 			$xml->addChild('hashtag', $hashtag);
 			$xml->addChild('tweet_limit', $tweet_limit);
+			$xml->addChild('delay', $delay);
 			
 			if (! $xml->asXML($thisfile_xml)) {
 				$error = i18n_r('CHMOD_ERROR');
@@ -77,6 +87,7 @@ function last_hashtag_show() {
 				$x = getXML($thisfile_xml);
 				$hashtag = $x->hashtag;
 				$tweet_limit = $x->tweet_limit;
+				$delay = $x->delay;
 				$success = i18n_r('SETTINGS_UPDATED');
 			}
 		}
@@ -94,6 +105,7 @@ function last_hashtag_show() {
 		
 		<p><label for="inn_hashtag" ><?php i18n($thisfile_lht.'/HASHTAG'); ?></label><b>#  </b><input id="inn_hashtag" name="hashtag" class="text" value="<?php echo $hashtag; ?>" /></p>
 		<p><label for="inn_tweet_limit" ><?php i18n($thisfile_lht.'/TWEET_LIMIT'); ?></label><input id="inn_tweet_limit" name="tweet_limit" class="text" value="<?php echo $tweet_limit; ?>" /></p>
+		<p><label for="inn_delay" ><?php i18n($thisfile_lht.'/DELAY'); ?></label><input id="inn_delay" name="delay" class="text" value="<?php echo $delay; ?>" /></p>
 		
 		<p><input type="submit" id="submit" class="submit" value="<?php i18n('BTN_SAVESETTINGS'); ?>" name="submit" /></p>
 	</form>
